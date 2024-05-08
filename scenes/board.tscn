@@ -1,0 +1,302 @@
+[gd_scene load_steps=21 format=3 uid="uid://0o3qlirdlsfx"]
+
+[ext_resource type="Script" path="res://scripts/board.gd" id="1_5o4l2"]
+[ext_resource type="Shader" path="res://shaders/vcr.gdshader" id="3_ahp1q"]
+[ext_resource type="Texture2D" uid="uid://caeyivsofgyly" path="res://art/081D0A25-A417-412D-A473-DF7331881E6F_1_105_c.jpeg" id="3_eh8s0"]
+[ext_resource type="Texture2D" uid="uid://jpp1c6pj3jiu" path="res://art/icons_1024x1024/music.png" id="5_j0prm"]
+[ext_resource type="VideoStream" path="res://videos/51.ogv" id="8_lhlod"]
+[ext_resource type="VideoStream" path="res://videos/battletheme.ogv" id="9_ptk7f"]
+[ext_resource type="AudioStream" uid="uid://c8m1wdxi8dbc0" path="res://art/Cheap Order Track 2-normalized.wav" id="9_uxomw"]
+[ext_resource type="Texture2D" uid="uid://b0o20bu7xm6pv" path="res://art/icons_1024x1024/recycle_bin_full.png" id="10_0lcha"]
+[ext_resource type="VideoStream" path="res://videos/dumm.e.danc.ogv" id="10_bh40y"]
+[ext_resource type="VideoStream" path="res://videos/neobrokeboi.ogv" id="11_4pdsb"]
+[ext_resource type="Texture2D" uid="uid://dlfiynnafq4i1" path="res://art/icons_1024x1024/sounds.png" id="11_51tob"]
+[ext_resource type="Texture2D" uid="uid://d36sqdvl6p4mi" path="res://art/icons_1024x1024/world.png" id="12_al6kh"]
+[ext_resource type="VideoStream" path="res://videos/paintmixing.ogv" id="12_lwng4"]
+[ext_resource type="VideoStream" path="res://videos/pisces.ogv" id="13_aachr"]
+[ext_resource type="VideoStream" path="res://videos/snowblvd.ogv" id="14_np481"]
+[ext_resource type="VideoStream" path="res://videos/wntu2sty.ogv" id="15_6job7"]
+[ext_resource type="VideoStream" path="res://videos/yellow.ogv" id="16_l8cp0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m3ber"]
+frequency = 0.032
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b5r4o"]
+noise = SubResource("FastNoiseLite_m3ber")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj745"]
+shader = ExtResource("3_ahp1q")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.5
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_b5r4o")
+
+[node name="Board" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5o4l2")
+metadata/_edit_group_ = true
+
+[node name="VCRShader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="VCRShader"]
+material = SubResource("ShaderMaterial_jj745")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Cover" type="Sprite2D" parent="."]
+position = Vector2(725.312, 439.34)
+scale = Vector2(1.90283, 1.18621)
+texture = ExtResource("3_eh8s0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="RecycleBinFull" type="Sprite2D" parent="."]
+position = Vector2(96, 640)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_0lcha")
+
+[node name="Music" type="Sprite2D" parent="."]
+position = Vector2(96, 488)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_j0prm")
+
+[node name="Sounds" type="Sprite2D" parent="."]
+position = Vector2(104, 336)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_51tob")
+
+[node name="World" type="Sprite2D" parent="."]
+position = Vector2(96, 184)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_al6kh")
+
+[node name="Homebar" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -72.0
+offset_right = 1055.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.840001, 1)
+color = Color(0.611765, 0.611765, 0.611765, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Homebar"]
+layout_mode = 0
+offset_left = 22.2222
+offset_top = 8.0
+offset_right = 62.2222
+offset_bottom = 48.0
+scale = Vector2(3.88889, 1.44)
+color = Color(0.47451, 0.47451, 0.47451, 1)
+
+[node name="Label" type="Label" parent="Homebar/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1, 2.02778)
+text = "fart."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -480.0
+offset_bottom = -272.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+mouse_force_pass_scroll_events = false
+stream = ExtResource("8_lhlod")
+loop = true
+
+[node name="BG2" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_bottom = -272.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("9_ptk7f")
+loop = true
+
+[node name="BG3" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 480.0
+offset_bottom = -272.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("10_bh40y")
+loop = true
+
+[node name="BG4" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 272.0
+offset_right = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("11_4pdsb")
+loop = true
+
+[node name="BG5" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_top = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("12_lwng4")
+loop = true
+
+[node name="BG6" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 272.0
+offset_right = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("13_aachr")
+loop = true
+
+[node name="BG7" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 544.0
+offset_right = -480.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("14_np481")
+loop = true
+
+[node name="BG8" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_top = 544.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("15_6job7")
+loop = true
+
+[node name="BG9" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 544.0
+offset_right = 480.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 1
+stream = ExtResource("16_l8cp0")
+loop = true
+
+[node name="WhiteFade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.999999)
+
+[node name="StartupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_uxomw")
+volume_db = -3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="focus_entered" from="BG" to="." method="_on_bg_focus_entered"]
+[connection signal="mouse_entered" from="BG" to="." method="_on_bg_mouse_entered"]
+[connection signal="mouse_exited" from="BG" to="." method="_on_bg_mouse_exited"]
+[connection signal="focus_entered" from="BG2" to="." method="_on_bg_2_focus_entered"]
+[connection signal="mouse_entered" from="BG2" to="." method="_on_bg_2_mouse_entered"]
+[connection signal="mouse_exited" from="BG2" to="." method="_on_bg_2_mouse_exited"]
+[connection signal="focus_entered" from="BG3" to="." method="_on_bg_3_focus_entered"]
+[connection signal="mouse_entered" from="BG3" to="." method="_on_bg_3_mouse_entered"]
+[connection signal="mouse_exited" from="BG3" to="." method="_on_bg_3_mouse_exited"]
+[connection signal="focus_entered" from="BG4" to="." method="_on_bg_4_focus_entered"]
+[connection signal="mouse_entered" from="BG4" to="." method="_on_bg_4_mouse_entered"]
+[connection signal="mouse_exited" from="BG4" to="." method="_on_bg_4_mouse_exited"]
+[connection signal="focus_entered" from="BG5" to="." method="_on_bg_5_focus_entered"]
+[connection signal="mouse_entered" from="BG5" to="." method="_on_bg_5_mouse_entered"]
+[connection signal="mouse_exited" from="BG5" to="." method="_on_bg_5_mouse_exited"]
+[connection signal="focus_entered" from="BG6" to="." method="_on_bg_6_focus_entered"]
+[connection signal="mouse_entered" from="BG6" to="." method="_on_bg_6_mouse_entered"]
+[connection signal="mouse_exited" from="BG6" to="." method="_on_bg_6_mouse_exited"]
+[connection signal="focus_entered" from="BG7" to="." method="_on_bg_7_focus_entered"]
+[connection signal="mouse_entered" from="BG7" to="." method="_on_bg_7_mouse_entered"]
+[connection signal="mouse_exited" from="BG7" to="." method="_on_bg_7_mouse_exited"]
+[connection signal="focus_entered" from="BG8" to="." method="_on_bg_8_focus_entered"]
+[connection signal="mouse_entered" from="BG8" to="." method="_on_bg_8_mouse_entered"]
+[connection signal="mouse_exited" from="BG8" to="." method="_on_bg_8_mouse_exited"]
+[connection signal="focus_entered" from="BG9" to="." method="_on_bg_9_focus_entered"]
+[connection signal="mouse_entered" from="BG9" to="." method="_on_bg_9_mouse_entered"]
+[connection signal="mouse_exited" from="BG9" to="." method="_on_bg_9_mouse_exited"]

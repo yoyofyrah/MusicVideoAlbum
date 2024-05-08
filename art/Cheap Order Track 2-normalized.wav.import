@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8m1wdxi8dbc0"
+path="res://.godot/imported/Cheap Order Track 2-normalized.wav-0ee4db4d388b835a75ec0d503bde3def.sample"
+
+[deps]
+
+source_file="res://art/Cheap Order Track 2-normalized.wav"
+dest_files=["res://.godot/imported/Cheap Order Track 2-normalized.wav-0ee4db4d388b835a75ec0d503bde3def.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
